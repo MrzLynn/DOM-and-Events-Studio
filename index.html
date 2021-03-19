@@ -32,9 +32,41 @@
             </div>
         </div>
         <div style="text-align: center;">
-            <button id = "takeoff">Take off</button>
-            <button id = "landing">Land</button>
-            <button id = "missionAbort">Abort Mission</button>
+            <button id = "takeoff" onclick="takeOff()">Take off</button>
+            <button id = "landing" onclick= "landing()" >Land</button>
+            <button id = "missionAbort" onclick="abortMission()">Abort Mission</button>
     </div>
+    <script>
+            const shuttleStatus = document.getElementById('flightStatus');
+            const takeOffButton = document.getElementById('takeoff');
+            const colorBackground = document.getElementById('shuttleBackground');
+            const shuttleHeight = document.getElementById('spaceShuttleHeight');
+            const landingButton = document.getElementById('landing');
+            const abortMissionButton = document.getElementById('missionAbort');
+
+            function takeOff() {
+            if(window.confirm('Confirm that the shuttle is ready for takeoff')) {
+                shuttleStatus.innerHTML = "Shuttle in flight."
+                colorBackground.style.background = 'blue'
+                shuttleHeight.innerHTML = Number(shuttleHeight.innerHTML) + 10000
+
+            }            
+            }
+            const landing = () => {
+               alert.('The shulttle is landing. Landing gear engaged.')
+               shuttleStatus.innerHTML = 'The shuttle has landed';
+               colorBackground.style.background = 'green';
+               shuttleHeight.innerHTML = 0;
+            }
+
+            const abortMission = () => {
+                if(confirm('Confirm that you want to abort the mission')){
+                    shuttleStatus.innerHTML = 'Mission Aborted';
+                    colorBackground.style.background = 'green';
+                    shuttleHeight.innerHTML = 0;
+                }
+            }
+
+    </script>
     </body>
 </html>
